@@ -1,3 +1,5 @@
+{% load static %}   {# 이걸 넣어 줘야 static 관련된 구문을 이 파일 내부에서 사용할 수 있다. #}
+
 <head>
   <meta charset="UTF-8">
   <title>Django-Pinterest</title>
@@ -7,4 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+  
+  <!-- DEFAULT CSS LINK -->
+  <link rel="stylesheet" href="{% static 'base.css' %}" type="text/css">
 </head>

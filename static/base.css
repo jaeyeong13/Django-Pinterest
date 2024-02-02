@@ -1,0 +1,17 @@
+.djanterest_logo {
+   font-family: 'Black Ops One', system-ui;
+}
+
+.djanterest_footer_button {
+  font-size: .6rem;
+}
+
+.djanterest_footer {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.djanterest_header {
+  text-align: center;
+  margin: 2rem 0;
+}
