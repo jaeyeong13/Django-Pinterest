@@ -1,6 +1,7 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from accountapp.models import HelloWorld
+from django.urls import reverse
 
 # Create your views here.
 
@@ -10,6 +11,9 @@ def hello_world(request):
     new_hello_world = HelloWorld()    # HelloWorld 뒤에 괄호를 넣어 주면, HelloWorld라는 빵틀에서 나온 새로운 객체가 new_hello_world라는 변수에 저장이 됨
     new_hello_world.text = temp
     new_hello_world.save()    # 이렇게 하면 실제로 DB에 HelloWorld 객체를 저장하게 됨.
-    return render(request, 'accountapp/hello_world.html', context={'hello_world_output':new_hello_world})
+
+    hello_world_list = HelloWorld.objects.all()     # HelloWorld라는 객체에서 모든 데이터를 긁어옴
+    return HttpResponseRedirect(reverse('accountapp:hello_world'))      # accountapp 내부에 있는 hello_world로 재접속하라
   else:
-    return render(request, 'accountapp/hello_world.html', context={'text':'GET METHOD!!!'})
+    hello_world_list = HelloWorld.objects.all()
+    return render(request, 'accountapp/hello_world.html', context={'hello_world_list':hello_world_list})
