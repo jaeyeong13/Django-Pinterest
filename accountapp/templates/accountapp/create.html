@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <div>
+  <div style="text-align: center">
     <form action="{% url 'accountapp:create' %}" method="post">
       {% csrf_token %}
-      {{ form }}
+      {{ form }}  <!-- views.py에서 지정한 form 파일이 여기에 이렇게 적으면 끝나는 것 -->
       <input type="submit" class="btn btn-primary">
     </form>
   </div>
