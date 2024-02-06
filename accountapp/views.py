@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from accountapp.models import HelloWorld
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -28,3 +28,8 @@ class AccountCreateView(CreateView):
   form_class = UserCreationForm
   success_url = reverse_lazy('accountapp:hello_world')    # 계정을 만드는 데 성공했다면 어느 경로로 재연결할 것인가 - 여기서는 accountapp의 hello_world로 재연결하라.
   template_name = 'accountapp/create.html'
+
+class AccountDetailView(DetailView):
+  model = User
+  context_object_name = 'target_user'  # template에서 사용하는 user 객체의 이름을 다르게 설정해줌. 이렇게 하면 다른 사람이 오더라도 나의 페이지를 볼 수 있음 (인스타그램처럼)
+  template_name = 'accountapp/detail.html'

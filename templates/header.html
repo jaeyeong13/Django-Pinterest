@@ -6,15 +6,18 @@
     <span>nav1</span>
     <span>nav2</span>
     <span>nav3</span>
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated %}    <!-- authenticated -->
       <form action="{% url 'accountapp:logout' %}" method="post" style="display: inline;">
         {% csrf_token %}
+        <a href="{% url 'accountapp:detail' pk=user.pk %}" style="text-decoration: none">
+          <span>MyPage</span>
+        </a>
         <input type="hidden" name="next" value="{{ request.path }}">
         <button type="submit" style="border: none; background: none; padding: 0; margin: 0; cursor: pointer;">
           <span>logout</span>
         </button>
       </form>
-    {% else %}
+    {% else %}    <!-- not authenticated -->
       <a href="{% url 'accountapp:login' %}?next={{ request.path }}">
         <span>login</span>
       </a>
