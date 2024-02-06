@@ -10,6 +10,15 @@
       <h2 style="font-family: 'MaruBuri-Bold'">
         {{ target_user.username }}
       </h2>
+
+      <!-- 본인 페이지에 본인이 들어왔을 때 -->
+      {% if target_user == user %}
+      <a href="{% url 'accountapp:update' pk=user.pk %}" style="text-decoration: none">
+        <p>
+          Change Info
+        </p>
+      </a>
+      {% endif %}
     </div>
   </div>
 
